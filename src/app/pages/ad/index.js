@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Form, Input, Select } from "@rocketseat/unform";
 //import * as Yup from "yup";
+import { getSetId } from "../../../services/auth";
 
 import Header from "../../components/Header";
 import api from "../../../services/api";
@@ -13,12 +14,19 @@ const options = [
 ];
 function Ad() {
   function handleSubmit(data, { resetForm }) {
-    console.log(data);
+    const id = getSetId();
+    const obj = Object.assign(data, { user_id: id }); 
+    // try {
+    //   const response = api.post("/ads", data);
+    //   login(response.data.token);
+    //   this.props.history.push("/dashboard/register");
+    // } catch (error) {
+    //   this.setState({ message: error.response.data.error });
+    // }
+    console.log(obj);
     api
-      .post("/ads", data)
-      .then(function(response) {
-        console.log(response);
-      })
+      .post("/ads", obj)
+      .then(function(response) {})
       .catch(function(error) {
         console.log(error);
       });

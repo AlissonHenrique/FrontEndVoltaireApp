@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Form, Input } from "@rocketseat/unform";
-
+import { withRouter } from "react-router-dom";
 import api from "../../../services/api";
+import { login, username, setId } from "../../../services/auth";
+
 import "./styles.css";
 class Signup extends Component {
   state = {
@@ -9,20 +11,16 @@ class Signup extends Component {
   };
   componentDidMount() {}
   handleSubmit = async data => {
-    var self = this;
-    await api
-      .post("/session", data)
-      .then(function(response) {
-        if (response.status === 200) {
-          window.location.href = "/dashboard/register";
-        }
-      })
-      .catch(function(error) {
-        if (error.response.status === 404) {
-          console.log(error.response.data);
-          self.setState({ message: error.response.data.error });
-        }
-      });
+    try {
+      const response = await api.post("/session", data);
+      const { name, _id } = response.data.user;
+      login(response.data.token);
+      username(name);
+      setId(_id);
+      this.props.history.push("/dashboard/register");
+    } catch (err) {
+      this.setState({ message: err.response.data.error });
+    }
   };
 
   render() {
@@ -47,4 +45,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

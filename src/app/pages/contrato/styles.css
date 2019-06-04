@@ -1,0 +1,21 @@
+.card {
+  padding: 30px;
+  border-radius: 2;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h1 {
+  font-weight: bold;
+  color: #2f2936;
+  font-size: 18px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background: #8e71ed;
+  width: 180px;
+}
+button.btn {
+  color: #fff;
+  text-decoration: none;
+}
