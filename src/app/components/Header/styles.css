@@ -1,6 +1,23 @@
 .nav {
-  height: 4.375rem;
+  height: 30px;
   margin-bottom: 1.5rem;
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-  background-color: #fff !important;
+  padding: 6px 0 0 0;
+}
+
+.fundo {
+  background-color: #23263e !important;
+  margin-bottom: 40px;
+}
+ul li a {
+  color: #adb0b5;
+}
+p {
+  color: #adb0b5;
+}
+.dropdown .btn {
+  background: #23263e;
+  border-color: #23263e;
+  padding: 15px;
+  outline: 0;
 }

@@ -1,36 +1,62 @@
 import React, { Component } from "react";
 import { Form, Input } from "@rocketseat/unform";
-import { Redirect } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import api from "../../../services/api";
 import "./styles.css";
 class Signup extends Component {
+  state = {
+    message: ""
+  };
   handleSubmit = async data => {
-    await api
-      .post("/users", data)
-      .then(function(response) {
-        console.log(response);
-        return <Redirect to="/" />;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    try {
+      await api.post("/users", data);
+
+      this.props.history.push("/");
+    } catch (err) {
+      this.setState({ message: err.response.data.error });
+    }
+
+    // await api
+    //   .post("/users", data)
+    //   .then(function(response) {
+    //     console.log(response);
+
+    //     this.props.history.push("/");
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   };
 
   render() {
     return (
       <div className="auth-wrapper">
         <Form onSubmit={this.handleSubmit}>
-          <Input type="text" name="name" placeholder="Nome completo" />
+          <img
+            src="https://eadvoltaire.com.br/img/voltaire-logo.svg"
+            width="200"
+            alt=""
+          />
+          <br />
+          {this.state.message.length > 1 ? (
+            <p className="alert alert-danger text-center">
+              {this.state.message}
+            </p>
+          ) : (
+            <span />
+          )}
+
+          <Input type="text" name="name" placeholder="Nome" />
           <Input type="email" name="email" placeholder="Seu e-mail" />
           <Input type="password" name="password" placeholder="Senha secreta" />
 
           <button type="submit">Criar conta</button>
 
-          <a href="/">Já possuo conta</a>
+          <Link to={"/"}>Já possuo conta</Link>
         </Form>
       </div>
     );
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

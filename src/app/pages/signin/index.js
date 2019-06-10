@@ -17,7 +17,7 @@ class Signup extends Component {
       login(response.data.token);
       username(name);
       setId(_id);
-      this.props.history.push("/dashboard/register");
+      this.props.history.push("/register");
     } catch (err) {
       this.setState({ message: err.response.data.error });
     }
@@ -27,6 +27,12 @@ class Signup extends Component {
     return (
       <div className="auth-wrapper">
         <Form onSubmit={this.handleSubmit}>
+          <img
+            src="https://eadvoltaire.com.br/img/voltaire-logo.svg"
+            width="200"
+            alt=""
+          />
+          <br />
           {this.state.message.length > 1 ? (
             <p className="alert alert-danger text-center">
               {this.state.message}

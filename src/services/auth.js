@@ -1,10 +1,14 @@
-export const TOKEN_KEY = "@airbnb-Token";
-export const TOKEN_NAME = "@airbnb-Name";
-export const TOKEN_SETID = "@airbnb-value";
+export const TOKEN_KEY = "@voltarie-Token";
+export const TOKEN_NAME = "@voltarie-Name";
+export const TOKEN_SETID = "@voltarie-value";
 export const isAuthenticated = () => localStorage.getItem(TOKEN_KEY) !== null;
 export const getToken = () => localStorage.getItem(TOKEN_KEY);
 export const getUsername = () => localStorage.getItem(TOKEN_NAME);
 export const getSetId = () => localStorage.getItem(TOKEN_SETID);
+export const logout = () => {
+  localStorage.clear();
+};
+
 export const login = token => {
   localStorage.setItem(TOKEN_KEY, token);
 };

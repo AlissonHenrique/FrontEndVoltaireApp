@@ -13,12 +13,12 @@ export function dateMask(value) {
     .replace(/(\d{2})(\d)/, "$1/$2")
     .replace(/(\d{4})(\d)/, "$1");
 }
-export function ufMask(value) {
-  // return value.replace(/([^A-Z]{2})/, "$1");
-  // // value.replace(/([^A-Z])/, "");
-  // // .replace(/(\d{2})(\d)/, "$1")
-  // // .replace(/([A-Z])/, "$1")
-}
+// export function ufMask(value) {
+//   return value.replace(/\d/g, "").replace(/(\d[0-3])(\d)/, "$1.$2");
+//   //.replace(/(\d{2})(\d)/, "$1");
+//   // .replace(/(\d{2})(\d)/, "$1")
+//   // .replace(/([A-Z])/, "$1");
+// }
 export function cnpjMask(value) {
   return value
     .replace(/\D/g, "")

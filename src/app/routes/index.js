@@ -7,6 +7,7 @@ import Signup from "../pages/signup";
 import Signin from "../pages/signin";
 import Contrato from "../pages/contrato";
 import Ad from "../pages/ad";
+import List from "../pages/list";
 
 // autentica rotas
 const PrivateRout = ({ component: Component, ...rest }) => (
@@ -27,11 +28,10 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={Signin} />
       <Route path="/signin" component={Signin} />
-      <PrivateRout path="/dashboard/register" component={Ad} />
+      <PrivateRout path="/register" component={Ad} />
       <Route path="/signup" component={Signup} />
       <Route path="/contrato" component={Contrato} />
-
-      <PrivateRout path="/teste" component={() => <h1>Você está Logado</h1>} />
+      <PrivateRout path="/list" component={List} />
     </Switch>
   </BrowserRouter>
 );

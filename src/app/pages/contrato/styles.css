@@ -10,12 +10,15 @@
   font-size: 18px;
 }
 
-.btn {
-  padding: 10px 20px;
-  background: #8e71ed;
-  width: 180px;
-}
 button.btn {
   color: #fff;
   text-decoration: none;
+}
+button.btn:hover {
+  color: #fff;
+  text-decoration: none;
+}
+#contrato1,
+#contrato2 {
+  display: none;
 }
