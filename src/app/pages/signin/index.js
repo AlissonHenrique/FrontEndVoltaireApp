@@ -33,7 +33,7 @@ class Signup extends Component {
             alt=""
           />
           <br />
-          {this.state.message.length > 1 ? (
+          {this.state.message ? (
             <p className="alert alert-danger text-center">
               {this.state.message}
             </p>
